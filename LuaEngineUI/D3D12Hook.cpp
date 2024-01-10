@@ -179,21 +179,6 @@ namespace D3D12 {
 			}
 			LuaCore::run("on_imgui");
 		}
-		else
-		{
-			ImGui::GetWindowWidth();
-			ImGui::SetNextWindowBgAlpha(0);
-			HWND gameh = FindWindowA("MT FRAMEWORK", NULL);
-			RECT r1;
-			::GetWindowRect(gameh, &r1);	
-			ImGui::SetNextWindowPos({ r1.right - r1.left - 300.f, r1.bottom - r1.top - 80.f }, ImGuiCond_FirstUseEver);
-			ImGui::SetNextWindowSize({ 300.f, 80.f }, ImGuiCond_FirstUseEver);
-			ImGui::Begin("LuaEngineUI", nullptr, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_AlwaysUseWindowPadding);
-			ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0, 0.8, 0, 0.6));
-			ImGui::Text("LueEngine UI Internal Version 1.1.5.389");
-			ImGui::PopStyleColor();
-			ImGui::End();
-		}
 
 		FrameContext& currentFrameContext = g_FrameContext[pSwapChain->GetCurrentBackBufferIndex()];
 		currentFrameContext.command_allocator->Reset();
