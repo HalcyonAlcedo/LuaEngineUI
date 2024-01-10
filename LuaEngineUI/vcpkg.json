@@ -1,0 +1,14 @@
+{
+  "$comment": "detours or minhook can be used for hooking. if both dependencies exist then detours is used.",
+  "name": "luaengine-ui",
+  "version-string": "0.0.1",
+  "dependencies": [
+    "detours",
+    "lua",
+    "minhook",
+    {
+      "name": "imgui",
+      "features": [ "win32-binding", "dx12-binding" ]
+    }
+  ]
+}
