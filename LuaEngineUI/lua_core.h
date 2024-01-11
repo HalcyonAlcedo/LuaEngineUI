@@ -25,7 +25,7 @@ namespace LuaCore {
             bool start = true
         ) :L(L), name(name), file(file), start(start) { };
     };
-    bool initUI = false;
+    DllExport extern bool initUI;
     DllExport extern bool luaframe;
     DllExport extern void run(std::string func, lua_State* runL = nullptr);
     DllExport extern std::vector<std::string> getLuaFils();
