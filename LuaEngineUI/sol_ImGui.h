@@ -1628,7 +1628,7 @@ namespace sol_ImGui
 	// Clipboard Utilities
 	inline std::string GetClipboardText()																{ return std::string(ImGui::GetClipboardText()); }
 	inline void SetClipboardText(const std::string& text)												{ ImGui::SetClipboardText(text.c_str()); }
-	
+
 	inline void InitEnums(sol::state_view& lua)
 	{
 #pragma region Window Flags

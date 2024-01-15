@@ -15,7 +15,6 @@ namespace D3D12 {
 
 		Success = 0,
 	};
-
 	Status Init();
 
 	Status InstallHooks();
