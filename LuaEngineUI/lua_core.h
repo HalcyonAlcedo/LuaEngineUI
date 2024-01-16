@@ -31,6 +31,7 @@ namespace LuaCore {
     DllExport extern void run(std::string func, lua_State* runL = nullptr);
     DllExport extern std::vector<std::string> getLuaFils();
     DllExport extern std::map<std::string, LuaScriptData> getLuas();
+    DllExport extern void Lua_register(std::string, int(*func)(lua_State* pL));
     void Imgui_Bindings() {
         for (std::string file_name : getLuaFils()) {
             LuaScriptData luae = getLuas()[file_name];
