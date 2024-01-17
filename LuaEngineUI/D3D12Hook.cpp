@@ -371,7 +371,7 @@ namespace D3D12 {
 			//绑定imgui
 			LuaCore::Imgui_Bindings();
 			//绑定纹理获取
-			for (std::string file_name : LuaCore::getLuaFils()) {
+			for (std::string file_name : LuaCore::getLuaFiles()) {
 				LuaCore::LuaScriptData luae = LuaCore::getLuas()[file_name];
 				if (luae.start) {
 					sol::state_view lua(luae.L);
