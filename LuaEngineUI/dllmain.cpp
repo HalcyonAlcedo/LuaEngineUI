@@ -4,24 +4,10 @@
 #include <fstream>
 #include "loader.h"
 #include "util.h"
-#include "lua_core.h"
-
-
-
-static int CreateStatusAPI() {
-	LuaCore::Lua_register("CheckImguiStatus", [](lua_State* pL) -> int
-		{
-			// 目前只返回固定值0，用于检测模块是否加载
-			lua_pushinteger(pL, 0);
-			return 0;
-		});
-}
 
 DWORD WINAPI AttachThread(LPVOID lParam) {
 	if (D3D12::Init() == D3D12::Status::Success) {
 		D3D12::InstallHooks();
-		// 为用户端提供一个检测状态的 API
-		CreateStatusAPI();
 	}
 	return 0;
 }

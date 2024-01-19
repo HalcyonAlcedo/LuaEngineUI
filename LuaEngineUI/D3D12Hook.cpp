@@ -255,6 +255,15 @@ namespace D3D12 {
 		return std::make_tuple((uintptr_t)(ImTextureID)my_texture_srv_gpu_handle.ptr, my_image_width, my_image_height);
 	}
 
+	static void CreateStatusAPI() {
+		LuaCore::Lua_register("CheckImguiStatus", [](lua_State* pL) -> int
+			{
+				// 目前只返回固定值0，用于检测模块是否加载
+				lua_pushinteger(pL, 0);
+				return 0;
+			});
+	}
+
 	long __fastcall HookPresent(IDXGISwapChain3* pSwapChain, UINT SyncInterval, UINT Flags) {
 		if (g_pD3DCommandQueue == nullptr) {
 			return OriginalPresent(pSwapChain, SyncInterval, Flags);
@@ -664,6 +673,9 @@ namespace D3D12 {
 		Hook(140, (void**)&OriginalPresent, HookPresent);
 		Hook(145, (void**)&OriginalResizeBuffers, HookResizeBuffers);
 		
+		// 为用户端提供一个检测状态的 API
+		CreateStatusAPI();
+
 		return Status::Success;
 	}
 
